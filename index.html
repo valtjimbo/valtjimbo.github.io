@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Jorge Valtueña">
+        <meta name="description" content="Personal page">
+        <title>Jorge valtueña - Proyecto</title>
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+        <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+    </head>
+
+    <body>
+        <div class="content">
+            <div class="about" id="about">
+                <div class="container">
+                    <div>
+                        <img src="images/foto_perfil.png" alt="Jorge Valtueña" height="150">
+                    </div>
+                    <!-- <div class="profile-picture"></div> -->
+                    <h1>JORGE <span class="name-blackout">Valtueña</span></h1>
+                    <h2>Finance &amp; <span class="name-blackout">Data Scientist.</span></h2>
+                    <h3>Madrid - Spain</h3>
+                    <hr class="title-line">
+                    <p class="dummy-about">Hello world!<br><br>Vivo en Madrid y tengo 25 años. Recientemente he cursado el <strong>Master en Big Data & Data Science</strong> en la U-Tad. A continuación podeis comprobar mi trabajo reciente en visualización, así como otros proyectos que he llevado a cabo.<br><br>Contácta conmigo! por LinkedIn o correo electrónico</p>
+                    <div class="container">
+                                <a href="#home" class="scroll footer-top"> <img src="images/drop.png" alt=""></a>
+
+                                 <ul class="social-ic-icons">
+                                    <a href="https://www.linkedin.com/in/jorge-valtue%C3%B1a-jim%C3%A9nez-a5569a95/" target="_blank"><li class="linkedin"><span> </span></li></a>
+                                    <a href="https://github.com/valtjimbo" target="_blank"><li class="github"><span> </span></li></a>
+                                    <a href="mailto:jorge.valtuena@live.u-tad.com"><li class="message"></li></a>
+                                </ul>
+                     </div>
+                     <br>
+                     <div>
+                     <a href="/assets/CV_Jorge_Valtueña.pdf" target="_blank">
+                            <button type="button" class="btn cv">
+                                <img src="images/cloud-download.png" height="60"><b style="display: flex; justify-content: center">Curriculum Vitae</b>
+                            </button>
+                        </a>
+                     </div>
+                     <br>
+                    <a href="#work" class="scroll down-in"><img src="images/down.png" alt=""></a>
+                </div>
+            </div>
+            <!--Work-->
+            <div class="container">
+                <div class="work" id="work">
+                    <h3>WORK</h3>
+                    <div id="container_headers">
+                        <div id="header_grafico">
+                            <h4> Gráfico aptitudes</h4>
+                        </div>
+                        <div id="header_mapa">
+                            <h4> Mapa de experiencia</h4>
+                        </div>
+                    </div>
+                     
+                    <div id="container_grafos">
+                        <div id="body_grafico"></div>
+                        <div id="body_mapa"></div>
+                    </div>
+            		<br>
+            		<hr class="title-line">
+            <!--Projects-->
+            		<h3>PROJECTS</h3>
+            		<br>
+            	</div>
+            </div>
+            <br>
+            <div class="projects">
+				<a href="/assets/TFM_Jorge_Valtueña.pdf" target="_blank">
+					<img src="images/proyecto_final_master.png" height="800" class= "imagenp">
+				</a>
+            </div>
+
+
+            <script type="text/javascript" src="js/map.js"></script>
+            <script type="text/javascript" src="js/barchart.js"></script>
+            <script type="text/javascript">
+                chart = new BarChart("#body_grafico", 400,500,)
+    
+                d3.dsv(",", "./dataset/barchart_dataset.csv", function(row) {
+                    return {
+                        id: row.id,
+                        value: +row.value
+                    }
+                })
+                .then(function(data) {
+                    chart.setData(data);
+                    chart2.setData(data);
+                })
+                .catch(function(error) {
+                    console.log(error)
+                })
+            </script>
+    </body>
+</html>
